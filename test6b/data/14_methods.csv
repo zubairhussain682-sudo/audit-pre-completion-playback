@@ -1,0 +1,25 @@
+topic,definition_or_caveat
+Authority,MySQL read-only consistent snapshot; canonical opportunity/access functions. Test-6A prose is supporting context.
+Population,"All eligible profile-windows: 8761 BASELINE_90 and 9762 FINAL_90, including PARTIAL and MIXED_ACCESS."
+Qualification,"Manual watch_seconds >= min(300, 0.10 * runtime_seconds); autoplay >= min(480, 0.20 * runtime_seconds). Full watch time of qualified events is counted."
+Window assignment,event_start_ts within each window; upper bound exclusive. Calendar timestamps are project IST. No cross-window first-start asset ownership for these viewing allocations.
+Primary language breadth,Languages with at least one qualified event. Raw-event breadth retained separately for PVW reconciliation; raw-only rows have is_meaningful_consumed_language=0.
+Raw mart distinction,PVW distinct_audio_languages_consumed is all-event breadth; top_language and top_language_share use qualified minutes.
+HHI rule,"Sum of squared language shares; valid if qualified minutes >0. Monolingual HHI=1. Mathematical descriptor only, no minimum evidence threshold."
+Opportunity shares,"Pair and title-day shares are structural composition, not a probability of choosing a language. Each sums to one within profile-window."
+Regional entitlement,Pack-language track admits a title; all listed tracks on the entitled title are selectable. Audio bridge has no independent track dates.
+Track timing caveat,"Tracks inherit title availability. This is a bounded source-model limitation, not uncertainty about implemented entitlement."
+Regime convention,Exact Test-5 history classification retained. A change between distinct ALL_ACCESS contexts remains MIXED_ACCESS under that established classifier even though VOD reach is equivalent.
+Quintiles,"SQL NTILE(5), partition window_label, ordered by qualified_watch_hours or active_days then profile_id. Full eligible population. Reconciled to existing carryforward ranks; no mechanism labels read."
+Context interpretation,"Separate coarse watch-hours and active-days strata, never crossed. These are descriptive comparisons, not causal adjustment or proof of independent effects. Ties can span quintiles."
+Programme basis,Exact dominant programme by qualified watch minutes; lexical tie-break. Five qualified shares retained. Library/on-demand is movie+web series+documentary; secondary sensitivity only.
+Aggregated means,Equal weight per profile within each reported group. No pooled regional result. Allocation reports all reachable profiles and consumers-only means separately.
+Diagnostic ratios,"consumed_languages_per_reachable_language and consumed_title_language_pairs_per_reachable_pair are diagnostics, not utilisation, conversion or openness scores."
+Consumption pair grain,Distinct parent title x consumed audio language with a qualified event; summed across language rows.
+Concentration differences,Top-share difference compares each distribution maximum; maxima can belong to different languages. Matched-language differences are in 04_cons_language and 10_lang_alloc.
+Consumed minutes by language,Stored in 04_cons_language rather than repeated as an embedded JSON map in 03_cons_profile.
+Quantiles,Pandas linear interpolation. Display rounding only; full numeric values retained.
+Existing analysis tables,profile_genre_structure_window; profile_mechanism_carryforward_window; profile_opportunity_controls; profile_opportunity_window
+Canonical references,src/marts.py build_profile_viewership_window; src/mart_transforms/qualification.py; src/mart_transforms/opportunity.py; src/mart_transforms/access.py; src/behavior.py _pick_audio; analysis/test5_5b1_reachable_window_pool.py classify_access_regimes; sql/diagnostics/test4_4d3_canonical_separate_activity_controls.sql
+Scope,"No mechanism-state merge, native-language inference, longitudinal comparison, openness score, permanent database tables, commits or pushes."
+Calculation runtime seconds,183.724 excluding workbook export
